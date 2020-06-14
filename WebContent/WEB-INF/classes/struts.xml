@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD
+Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name = "struts.action.extension" value="action,do" />
+	<constant name = "struts.i18n.encoding" value="UTF-8" />
+ 	
+ 	<package name="struts2" extends="struts-default">
+ 		<action name="hello" class="struts2.action.HelloAction">
+			 	<result>/WEB-INF/test/hello.jsp</result>
+ 		</action>
+ 		
+ 		<action name="empList" class="emp.EmpAction" method="empList">
+        	<result>/WEB-INF/emp/empList.jsp</result>
+        </action>
+
+        <action name="empInfo" class="emp.EmpAction" method="empInfo">
+        	<interceptor-ref name="params" />
+        	<result>/WEB-INF/emp/empInfo.jsp</result>
+        </action>
+
+         <action name="empModifyForm" class="emp.EmpAction" method="empModifyForm">
+         	<interceptor-ref name="params" />
+         	<result>/WEB-INF/emp/empModifyForm.jsp</result>
+         </action>
+
+        <action name="empModify" class="emp.EmpAction" method="empModify">
+        	<interceptor-ref name="prepare" />
+		<interceptor-ref name="modelDriven" />
+		<interceptor-ref name="params" />
+        	<result>/WEB-INF/emp/empModifyForm.jsp</result>
+        </action>
+
+        <action name="empDelete" class="emp.EmpAction" method="empDelete">
+        	<interceptor-ref name="params" />
+        	<result>/WEB-INF/emp/empInfo.jsp</result>
+        </action>
+
+        <action name="empAddForm">
+        	<result>/WEB-INF/emp/empAddForm.jsp</result>
+        </action>
+
+        <action name="empAdd"  class="emp.EmpAction" method="empAdd">
+        	<interceptor-ref name="prepare" />
+		<interceptor-ref name="modelDriven" />
+
+		<interceptor-ref name="params" />
+        	<result>/WEB-INF/emp/empAddForm.jsp</result>
+        </action>
+
+
+ </package>
+</struts>
